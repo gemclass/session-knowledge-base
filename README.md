@@ -165,7 +165,17 @@ Auto-generates comprehensive session summary:
 - Saves to appropriate `docs/sessions/` folder
 - Extracts learnings to master files
 - Commits and pushes to GitHub
+- **Checks review dates** and prompts if reviews are due
 - Dual storage: local + remote
+
+### `/knowledge-review`
+Conducts scheduled reviews to keep knowledge base fresh:
+- Checks `.review-tracker.json` for review status
+- Shows which reviews are overdue (weekly/monthly/quarterly)
+- Guides you through review process interactively
+- Updates KNOWLEDGE-BASE.md with consolidated learnings
+- Updates tracking file and commits changes
+- Ensures knowledge base stays relevant and accurate
 
 ---
 
@@ -254,11 +264,26 @@ ls -la ~/session-knowledge-base/docs/sessions/n8n-workflow/
 
 ## 📅 Maintenance
 
-### Regular Reviews
-- **Weekly**: Quick scan of new sessions for immediate learnings
-- **Monthly**: Update `KNOWLEDGE-BASE.md` with accumulated patterns
-- **Quarterly**: Archive outdated content, restructure if needed
-- **Annually**: Major revision and cleanup
+### Regular Reviews (Automated Reminders)
+The system tracks review dates in `.review-tracker.json` and reminds you when reviews are due.
+
+- **Weekly** (Every 7 days, ~5-10 min):
+  - Quick scan of new sessions
+  - Extract immediate learnings
+  - `/summarize-session` will prompt when due
+
+- **Monthly** (Every 30 days, ~15-30 min):
+  - Consolidate patterns from past month
+  - Update code library and checklist
+  - Verify links and references
+
+- **Quarterly** (Every 90 days, ~1-2 hours):
+  - Comprehensive knowledge base audit
+  - Archive outdated content
+  - Major restructuring if needed
+  - Plan next quarter improvements
+
+**To conduct review**: Run `/knowledge-review` - it will guide you through the process and update tracking automatically.
 
 ### Quality Checks
 - Remove duplicate patterns
@@ -353,8 +378,11 @@ git config --global user.email "your.email@example.com"
 # Start a new project
 /project-init
 
-# End a session
+# End a session (automatically checks if reviews are due)
 /summarize-session
+
+# Conduct knowledge base review
+/knowledge-review
 
 # Search knowledge base
 grep -r "keyword" ~/session-knowledge-base/

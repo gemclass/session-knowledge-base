@@ -168,17 +168,47 @@
 ## Evolution Guidelines
 
 ### Updating This Document
-1. Add new learnings immediately after session
+1. Add new learnings immediately after session (`/summarize-session` does this automatically)
 2. Extract patterns, don't just list facts
 3. Keep sections concise - link to detailed docs
-4. Review quarterly for outdated content
-5. Archive deprecated approaches to "Archive" section
+4. Conduct scheduled reviews to keep content fresh
+5. Archive deprecated approaches to "Archive" section at bottom
+
+### Scheduled Reviews
+
+**Review tracking**: `.review-tracker.json` stores last review dates
+
+**Weekly Review** (Every 7 days, ~5-10 min):
+- Quick scan of recent sessions for critical learnings
+- Extract immediate patterns to knowledge base
+- Update best practices if needed
+- Run `/knowledge-review` when prompted
+
+**Monthly Review** (Every 30 days, ~15-30 min):
+- Review all sessions from past month
+- Consolidate duplicate patterns
+- Update code library with new patterns
+- Verify links and references
+- Update PROJECT-CHECKLIST.md
+
+**Quarterly Review** (Every 90 days, ~1-2 hours):
+- Comprehensive audit of entire knowledge base
+- Archive outdated approaches
+- Restructure sections if needed
+- Major code library updates
+- Review quality standards
+- Plan improvements for next quarter
+
+**Automated Reminders**:
+- `/summarize-session` checks review dates automatically
+- Prompts you when reviews are overdue
+- Run `/knowledge-review` to conduct review and update tracking
 
 ### Quality Standards
 - **Actionable**: Every item should guide decisions
 - **Specific**: Avoid vague generalities
 - **Tested**: Only include proven approaches
-- **Maintained**: Remove or update stale content
+- **Maintained**: Remove or update stale content via scheduled reviews
 
 ---
 
