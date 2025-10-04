@@ -268,15 +268,110 @@ ls -la ~/session-knowledge-base/docs/sessions/n8n-workflow/
 
 ---
 
-## 🚦 Getting Started Today
+## 🚦 Getting Started
 
-1. **Clone this repo** (if not already done)
-2. **Run `/project-init`** to load knowledge for your current project
-3. **Review** `KNOWLEDGE-BASE.md` for relevant patterns
-4. **Check** `PROJECT-CHECKLIST.md` for setup steps
-5. **Search** `docs/sessions/` for similar past projects
-6. **Build** your project with accumulated wisdom
-7. **Run `/summarize-session`** when done to contribute back
+### Initial Setup (One-Time)
+
+**1. Clone the Repository**
+```bash
+cd ~
+git clone https://github.com/gemclass/session-knowledge-base.git
+```
+
+**2. Configure Slash Commands in Claude Code**
+
+You need to copy the slash commands to your local Claude Code configuration:
+
+```bash
+# Create .claude directory in your main Code folder if it doesn't exist
+mkdir -p ~/Desktop/Code/.claude
+
+# Copy the slash commands
+cp ~/session-knowledge-base/.claude/commands.md ~/Desktop/Code/.claude/commands.md
+```
+
+**Note**: The commands will work when running Claude Code from `~/Desktop/Code` or any subdirectory. Adjust the path based on where you keep your projects.
+
+**3. Verify Setup**
+```bash
+# Check that files exist
+ls -la ~/session-knowledge-base/
+ls -la ~/Desktop/Code/.claude/
+
+# Should see:
+# ~/session-knowledge-base/KNOWLEDGE-BASE.md
+# ~/session-knowledge-base/PROJECT-CHECKLIST.md
+# ~/Desktop/Code/.claude/commands.md
+```
+
+**4. Configure Git (if not already done)**
+```bash
+# Set up git identity (use your GitHub email)
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Set up SSH key for GitHub (recommended) or use HTTPS token
+# For SSH: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+```
+
+### Daily Usage
+
+**Starting a New Project:**
+1. Open terminal in your project directory (must be under `~/Desktop/Code/`)
+2. Start Claude Code
+3. Run `/project-init` to load knowledge
+4. Follow the checklist and patterns
+5. Build your project
+
+**Ending a Session:**
+1. Run `/summarize-session` to document learnings
+2. Summary auto-saves and pushes to GitHub
+3. Knowledge base automatically updated
+
+### Troubleshooting
+
+**Commands not found?**
+- Ensure you're running Claude Code from `~/Desktop/Code` or a subdirectory
+- Check `.claude/commands.md` exists in `~/Desktop/Code/.claude/`
+
+**Git push fails?**
+- Verify git credentials: `git config --list`
+- Test push manually: `cd ~/session-knowledge-base && git push`
+- Check SSH keys: `ssh -T git@github.com`
+
+**Wrong file locations?**
+- Knowledge base should be at: `~/session-knowledge-base/`
+- Slash commands should be at: `~/Desktop/Code/.claude/commands.md`
+- Session summaries save to: `~/Desktop/Code/session-summaries/`
+
+---
+
+## 📋 Quick Reference
+
+### Essential Commands
+```bash
+# Start a new project
+/project-init
+
+# End a session
+/summarize-session
+
+# Search knowledge base
+grep -r "keyword" ~/session-knowledge-base/
+
+# Browse past sessions
+ls ~/session-knowledge-base/docs/sessions/
+
+# Pull latest knowledge
+cd ~/session-knowledge-base && git pull
+```
+
+### File Locations
+- **Knowledge Base Repo**: `~/session-knowledge-base/`
+- **Master Reference**: `~/session-knowledge-base/KNOWLEDGE-BASE.md`
+- **Project Checklist**: `~/session-knowledge-base/PROJECT-CHECKLIST.md`
+- **Slash Commands**: `~/Desktop/Code/.claude/commands.md`
+- **Local Summaries**: `~/Desktop/Code/session-summaries/`
 
 ---
 
